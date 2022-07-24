@@ -7,3 +7,5 @@ A website, where you can play RPS (Rock Paper Scissors) all by yourself. Part of
 * Prove understanding of basic JS
 
 ### What was achieved
+
+### Credits
