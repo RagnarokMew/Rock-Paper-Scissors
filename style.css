@@ -8,29 +8,81 @@ body
     background-color: black;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 .top
 {
     display: flex;
-    flex: 0.2 0.2 auto;
+    flex-grow: 0.2;
+
 }
 
 .middle
 {
     display: flex;
-    flex: 0.6 0.6 auto;
+    flex-grow: 0.6;
+
+
 }
 
 .footer
 {
     display: flex;
-    flex: 0.2 0.2 auto;
+    flex-grow: 0.2;
+
 }
 
 .knight
 {
+    display: flex;
+    flex: 1 1 auto;
+    gap: 10px;
+}
 
+.cwrap
+{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/*
+Sizes will be set later
+*/
+.icon
+{
+    min-height: 150px;
+    min-width: 150px;
+    flex: 1 1 auto;
+}
+
+.name
+{
+    min-height: 50px;
+    min-width: 200px;
+    flex: 1 1 auto;
+}
+
+.counter
+{
+    min-width: 50px;
+    min-height: 50px;
+    flex: 1 1 auto;
+}
+
+.scorebox
+{
+    min-width: 50px;
+    min-height: 50px;
+}
+
+.row-rev
+{
+    flex-direction: row-reverse;
 }
 
 .debug
@@ -42,5 +94,11 @@ body
 .debug1
 {
     background-color: green;
-    background-color: aqua;
+    border: 10px solid aqua;
+}
+
+.debug2
+{
+    background-color: chartreuse;
+    border: 10px solid saddlebrown;
 }
