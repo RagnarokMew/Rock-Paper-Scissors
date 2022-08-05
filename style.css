@@ -8,6 +8,7 @@ body
     background-color: black;
     margin: 0;
     padding: 0;
+    font-family: Ubuntu, sans-serif, Arial;
     
 }
 
@@ -32,6 +33,7 @@ body
     justify-content: space-between;
     align-items: center;
     padding: 40px;
+    background-color: rgb(0, 13, 23);
 }
 
 .knight
@@ -98,6 +100,30 @@ Sizes will be set later
 .row-rev
 {
     flex-direction: row-reverse;
+}
+
+h1
+{
+    margin: 0;
+    font-size: 30px;
+}
+
+h2
+{
+    margin: 0;
+    font-size: 23px;
+}
+
+h3
+{
+    margin: 0;
+    font-size: 18px;
+}
+
+.links a
+{
+    text-decoration: none;
+    color: rgb(0, 204, 204);
 }
 
 .debug
