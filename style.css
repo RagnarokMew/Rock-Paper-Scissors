@@ -16,7 +16,6 @@ body
 {
     display: flex;
     flex-grow: 0.2;
-
 }
 
 .middle
@@ -73,9 +72,6 @@ Sizes will be set later
     display: flex;
     align-items: center;
     justify-content: center;
-
-    min-height: 50px;
-    min-width: 200px;
 }
 
 .counter
