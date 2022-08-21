@@ -9,3 +9,5 @@ A website, where you can play RPS (Rock Paper Scissors) all by yourself. Part of
 ### What was achieved
 
 ### Credits
+* Plank Texture - OpenClipart-Vectors (https://pixabay.com/vectors/wooden-boards-nails-wood-board-576105/)
+* Candle - 95C (https://pixabay.com/vectors/silhouette-candle-grey-vector-icon-2120203/)
