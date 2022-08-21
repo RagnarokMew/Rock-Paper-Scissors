@@ -21,6 +21,8 @@ body
     gap: 10px;
     padding: 10px;
     background-color: #8e3143;
+    background: url("Images/Drapery.jpg") repeat center center fixed;
+    border-bottom: #237B7D solid 2px;
 }
 
 .middle
@@ -29,8 +31,9 @@ body
     flex-grow: 1;
     justify-content: center;
     align-items: center;
-    padding: 40px;
     flex-direction: column;
+    background: url("Images/3068.jpg") no-repeat center center fixed;
+    background-size: cover;
 }
 
 .footer
@@ -58,6 +61,13 @@ body
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+.middle .cwrap
+{
+    background: #000000af;
+    width: 100%;
+    height: 100%;
 }
 
 .rwrap
@@ -129,9 +139,22 @@ Sizes will be set later
 button
 {
     border-radius: 7.5px;
-    height: 150px;
-    width: 150px;
+    height: 175px;
+    width: 175px;
     font-size: 30px;
+    background-color: black;
+    color: white;
+    border: rgb(77, 77, 77) solid 2px;
+}
+
+button:hover
+{
+    background-color: rgb(15, 15, 15);
+}
+
+button:active
+{
+    background-color: rgb(29, 29, 29);
 }
 
 .links
