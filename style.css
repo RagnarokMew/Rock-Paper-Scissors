@@ -9,21 +9,28 @@ body
     margin: 0;
     padding: 0;
     font-family: Ubuntu, sans-serif, Arial;
-    
+    overflow-x: hidden;
 }
 
 .top
 {
     display: flex;
-    flex-grow: 0.2;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: #8e3143;
 }
 
 .middle
 {
     display: flex;
-    flex-grow: 0.8;
-
-
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    flex-direction: column;
 }
 
 .footer
@@ -31,7 +38,7 @@ body
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px;
+    padding: 19px;
     background-color: rgb(0, 13, 23);
 }
 
@@ -39,14 +46,15 @@ body
 {
     display: flex;
     flex: 1 1 auto;
-    gap: 10px;
+    gap: 10vw;
+    align-items: center;
+    justify-content: center;
 }
 
 .cwrap
 {
     display: flex;
     flex-direction: column;
-    flex: 1 1 auto;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -56,6 +64,13 @@ body
 {
     display: flex;
     align-items: center;
+}
+
+.middle h1
+{
+    padding-bottom: 30px;
+    font-weight: 900;
+    font-size: 50px;
 }
 
 /*
@@ -76,14 +91,47 @@ Sizes will be set later
 
 .counter
 {
-    min-width: 50px;
-    min-height: 50px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 75px;
+    background-image: url('Images/Plank.png');
+    border: 5px solid rgb(37, 37, 37);
+    border-radius: 15px;
 }
 
 .scorebox
 {
-    min-width: 50px;
-    min-height: 50px;
+    width: 150px;
+    height: 200px;
+    position: relative;
+}
+
+.scorebox img
+{
+    position:absolute;
+    top: 0%;
+    left: 25%;
+    height: 200px;
+    object-fit: contain;
+}
+
+.btnhdl
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5vw;
+}
+
+button
+{
+    border-radius: 7.5px;
+    height: 150px;
+    width: 150px;
+    font-size: 30px;
 }
 
 .links
