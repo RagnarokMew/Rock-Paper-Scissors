@@ -54,6 +54,14 @@ body
     justify-content: center;
 }
 
+.status
+{
+    width: 400px;
+    height: 100px;
+    font-size: 20px;
+    text-align: center;
+}
+
 .cwrap
 {
     display: flex;
