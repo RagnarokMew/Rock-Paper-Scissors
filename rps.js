@@ -10,6 +10,8 @@ let status = document.getElementsByClassName("status");
 let playerWins = 0;
 let computerWins = rounds - 1;
 
+let scores = document.getElementsByClassName("counter");
+
 function computerChoice(max)
 {
     return Math.floor(Math.random()*max);
@@ -31,11 +33,13 @@ function round(playerChoice, computerChoice)
         {
             lightup(computerWins);
             computerWins--;
+            scores[1].textContent=rounds-computerWins-1;
         } 
         else 
         {
             lightup(playerWins);
             playerWins++;
+            scores[0].textContent=playerWins;
         }
     }
     else if(playerChoice == 2)
@@ -44,12 +48,14 @@ function round(playerChoice, computerChoice)
         {
             lightup(playerWins);
             playerWins++;
+            scores[0].textContent=playerWins;
         }
         else if(computerChoice == 2) return;
         else 
         {
             lightup(computerWins);
             computerWins--;
+            scores[1].textContent=rounds-computerWins-1;
         }
     }
     else
@@ -58,11 +64,13 @@ function round(playerChoice, computerChoice)
         {
             lightup(computerWins);
             computerWins--;
+            scores[1].textContent=rounds-computerWins-1;
         }
         else if(computerChoice == 2)
         {
             lightup(playerWins);
             playerWins++;
+            scores[0].textContent=playerWins;
         }
         else return;
     }
