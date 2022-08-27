@@ -8,7 +8,7 @@ let buttons = document.querySelectorAll("button")
 let candles = document.getElementsByClassName("scorebox");
 let status = document.getElementsByClassName("status");
 let playerWins = 0;
-let computerWins = rounds;
+let computerWins = rounds - 1;
 
 function computerChoice(max)
 {
@@ -20,19 +20,37 @@ function round(playerChoice, computerChoice)
     if(playerChoice == 1)
     {
         if(computerChoice == 1) return;
-        else if(computerChoice == 2) computerWins--;
-        else return playerWins++;
+        else if(computerChoice == 2)
+        {
+            computerWins--;
+        } 
+        else 
+        {
+            playerWins++;
+        }
     }
     else if(playerChoice == 2)
     {
-        if(computerChoice == 1) playerWins++;
+        if(computerChoice == 1) 
+        {
+            playerWins++;
+        }
         else if(computerChoice == 2) return;
-        else computerWins++;
+        else 
+        {
+            computerWins--;
+        }
     }
     else
     {
-        if(computerChoice == 1) computerWins++;
-        else if(computerChoice == 2) playerWins++;
+        if(computerChoice == 1)
+        {
+            computerWins--;
+        }
+        else if(computerChoice == 2)
+        {
+            playerWins++;
+        }
         else return;
     }
 }
@@ -44,7 +62,7 @@ buttons[0].addEventListener('click',()=>
     {
         alert("Win");
     }
-    if(computerWins<rounds/2)
+    if(computerWins<rounds/2 - 1 )
     {
         alert("Lose");
     }
