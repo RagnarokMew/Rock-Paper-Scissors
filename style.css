@@ -91,9 +91,6 @@ body
     font-size: 50px;
 }
 
-/*
-Sizes will be set later
-*/
 .icon
 {
     min-height: 150px;
@@ -199,6 +196,17 @@ h3
 {
     text-decoration: none;
     color: rgb(0, 204, 204);
+}
+
+.fade-in
+{
+    animation: fade-in 0.5s 1;
+}
+
+@keyframes fade-in
+{
+    0% {opacity: 0%;}
+    100% {opacity: 100%;}
 }
 
 .debug

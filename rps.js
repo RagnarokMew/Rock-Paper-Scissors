@@ -21,6 +21,7 @@ function lightup(candle)
 {
     const fire = document.createElement('img');
     fire.src='Images/Candle-top.png';
+    fire.className = "fade-in";
     candles[candle].appendChild(fire);
 }
 
