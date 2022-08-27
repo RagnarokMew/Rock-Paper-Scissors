@@ -114,37 +114,3 @@ buttons[2].addEventListener('click',()=>
         alert("Lose");
     }
 });
-
-function game(rounds = 5)
-{
-    let playerWins = 0;
-    let computerWins = 0;
-    let choice;
-    let play;
-    while(true)
-    {
-        if(playerWins + computerWins == rounds)
-        {
-            if(playerWins == computerWins) return DRAW;
-            else if(playerWins > computerWins) return WIN;
-            else return LOST;
-        }
-        else if(playerWins >= rounds/2) return WIN;
-        else if(computerWins >= rounds/2)return LOST;
-
-        choice = prompt("Rock, Paper or Scissors? (0, 1 ,2)");
-
-        play = round(choice, computerChoice(5) % 3);
-        if(play === null)alert("Round: Draw");
-        else if(play)
-        {
-            alert("Round: Won");
-            playerWins++;
-        }
-        else
-        {
-            alert("Round: Lost");
-            computerWins++;
-        }
-    }
-}
