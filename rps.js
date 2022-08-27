@@ -15,6 +15,13 @@ function computerChoice(max)
     return Math.floor(Math.random()*max);
 }
 
+function lightup(candle)
+{
+    const fire = document.createElement('img');
+    fire.src='Images/Candle-top.png';
+    candles[candle].appendChild(fire);
+}
+
 function round(playerChoice, computerChoice)
 {
     if(playerChoice == 1)
@@ -22,10 +29,12 @@ function round(playerChoice, computerChoice)
         if(computerChoice == 1) return;
         else if(computerChoice == 2)
         {
+            lightup(computerWins);
             computerWins--;
         } 
         else 
         {
+            lightup(playerWins);
             playerWins++;
         }
     }
@@ -33,11 +42,13 @@ function round(playerChoice, computerChoice)
     {
         if(computerChoice == 1) 
         {
+            lightup(playerWins);
             playerWins++;
         }
         else if(computerChoice == 2) return;
         else 
         {
+            lightup(computerWins);
             computerWins--;
         }
     }
@@ -45,10 +56,12 @@ function round(playerChoice, computerChoice)
     {
         if(computerChoice == 1)
         {
+            lightup(computerWins);
             computerWins--;
         }
         else if(computerChoice == 2)
         {
+            lightup(playerWins);
             playerWins++;
         }
         else return;
@@ -75,7 +88,7 @@ buttons[1].addEventListener('click',()=>
     {
         alert("Win");
     }
-    if(computerWins<rounds/2)
+    if(computerWins<rounds/2 - 1)
     {
         alert("Lose");
     }
@@ -88,7 +101,7 @@ buttons[2].addEventListener('click',()=>
     {
         alert("Win");
     }
-    if(computerWins<rounds/2)
+    if(computerWins<rounds/2 - 1)
     {
         alert("Lose");
     }
