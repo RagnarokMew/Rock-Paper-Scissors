@@ -25,6 +25,11 @@ function lightup(candle)
     candles[candle].appendChild(fire);
 }
 
+function lock()
+{
+    buttons.forEach((button)=>button.disabled=true);
+}
+
 function round(playerChoice, computerChoice)
 {
     if(playerChoice == 1)
@@ -83,10 +88,12 @@ buttons[0].addEventListener('click',()=>
     if(playerWins>rounds/2)
     {
         alert("Win");
+        lock();
     }
     if(computerWins<rounds/2 - 1 )
     {
         alert("Lose");
+        lock();
     }
 });
 
@@ -96,10 +103,12 @@ buttons[1].addEventListener('click',()=>
     if(playerWins>rounds/2)
     {
         alert("Win");
+        lock();
     }
     if(computerWins<rounds/2 - 1)
     {
         alert("Lose");
+        lock();
     }
 });
 
@@ -109,9 +118,11 @@ buttons[2].addEventListener('click',()=>
     if(playerWins>rounds/2)
     {
         alert("Win");
+        lock();
     }
     if(computerWins<rounds/2 - 1)
     {
         alert("Lose");
+        lock();
     }
 });
