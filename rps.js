@@ -7,10 +7,22 @@ if(!rounds)rounds=5;
 let buttons = document.querySelectorAll("button")
 let candles = document.getElementsByClassName("scorebox");
 let status = document.getElementsByClassName("status");
+let currPhase = "Attack Phase";
+let messagePhase = document.querySelectorAll("h1")[2];
 let playerWins = 0;
 let computerWins = rounds - 1;
 
 let scores = document.getElementsByClassName("counter");
+
+function phase()
+{
+    if(computerChoice(2)== true)
+    {
+        if(currPhase == "Attack Phase")currPhase="Defence Phase";
+        else currPhase="Attack Phase";
+        messagePhase.textContent=currPhase;
+    }
+}
 
 function computerChoice(max)
 {
@@ -40,12 +52,14 @@ function round(playerChoice, computerChoice)
             lightup(computerWins);
             computerWins--;
             scores[1].textContent=rounds-computerWins-1;
+            phase();
         } 
         else 
         {
             lightup(playerWins);
             playerWins++;
             scores[0].textContent=playerWins;
+            phase();
         }
     }
     else if(playerChoice == 2)
@@ -55,6 +69,7 @@ function round(playerChoice, computerChoice)
             lightup(playerWins);
             playerWins++;
             scores[0].textContent=playerWins;
+            phase();
         }
         else if(computerChoice == 2) return;
         else 
@@ -62,6 +77,7 @@ function round(playerChoice, computerChoice)
             lightup(computerWins);
             computerWins--;
             scores[1].textContent=rounds-computerWins-1;
+            phase();
         }
     }
     else
@@ -71,12 +87,14 @@ function round(playerChoice, computerChoice)
             lightup(computerWins);
             computerWins--;
             scores[1].textContent=rounds-computerWins-1;
+            phase();
         }
         else if(computerChoice == 2)
         {
             lightup(playerWins);
             playerWins++;
             scores[0].textContent=playerWins;
+            phase();
         }
         else return;
     }
@@ -84,7 +102,7 @@ function round(playerChoice, computerChoice)
 
 buttons[0].addEventListener('click',()=>
 {
-    round(1,computerChoice(5) % 3); 
+    round(1,computerChoice(3)); 
     if(playerWins>rounds/2)
     {
         alert("Win");
@@ -99,7 +117,7 @@ buttons[0].addEventListener('click',()=>
 
 buttons[1].addEventListener('click',()=>
 {
-    round(2,computerChoice(5) % 3); 
+    round(2,computerChoice(3)); 
     if(playerWins>rounds/2)
     {
         alert("Win");
@@ -114,7 +132,7 @@ buttons[1].addEventListener('click',()=>
 
 buttons[2].addEventListener('click',()=>
 {
-    round(3,computerChoice(5) % 3); 
+    round(3,computerChoice(3)); 
     if(playerWins>rounds/2)
     {
         alert("Win");
