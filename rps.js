@@ -6,11 +6,16 @@ let rounds;
 if(!rounds)rounds=5;
 let buttons = document.querySelectorAll("button")
 let candles = document.getElementsByClassName("scorebox");
-let status = document.getElementsByClassName("status");
+let phaseStatus = document.getElementsByClassName("status");
 let currPhase = "Attack Phase";
 let messagePhase = document.querySelectorAll("h1")[2];
+let choices = ['Rock', 'Paper', 'Scissors'];
+let endingWin  = ['YOU', 'HAVE', 'WON'];
+let endingLoss = ['YOU', 'HAVE', 'LOST'];
 let playerWins = 0;
 let computerWins = rounds - 1;
+
+phaseStatus[0].textContent = 'Ready your sword!';
 
 let scores = document.getElementsByClassName("counter");
 
@@ -37,9 +42,13 @@ function lightup(candle)
     candles[candle].appendChild(fire);
 }
 
-function lock()
+function lock(ending)
 {
-    buttons.forEach((button)=>button.disabled=true);
+    buttons.forEach((button,index)=>
+    {
+        button.disabled=true;
+        button.textContent=ending[index];
+    });
 }
 
 function round(playerChoice, computerChoice)
@@ -105,13 +114,11 @@ buttons[0].addEventListener('click',()=>
     round(1,computerChoice(3)); 
     if(playerWins>rounds/2)
     {
-        alert("Win");
-        lock();
+        lock(endingWin);
     }
     if(computerWins<rounds/2 - 1 )
     {
-        alert("Lose");
-        lock();
+        lock(endingLoss);
     }
 });
 
@@ -120,13 +127,11 @@ buttons[1].addEventListener('click',()=>
     round(2,computerChoice(3)); 
     if(playerWins>rounds/2)
     {
-        alert("Win");
-        lock();
+        lock(endingWin);
     }
     if(computerWins<rounds/2 - 1)
     {
-        alert("Lose");
-        lock();
+        lock(endingLoss);
     }
 });
 
@@ -135,12 +140,10 @@ buttons[2].addEventListener('click',()=>
     round(3,computerChoice(3)); 
     if(playerWins>rounds/2)
     {
-        alert("Win");
-        lock();
+        lock(endingWin);
     }
     if(computerWins<rounds/2 - 1)
     {
-        alert("Lose");
-        lock();
+        lock(endingLoss);
     }
 });
