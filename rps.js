@@ -4,18 +4,21 @@ const DRAW = null;
 
 let rounds;
 if(!rounds)rounds=5;
-let buttons = document.querySelectorAll("button")
+let buttons = document.getElementsByClassName("btnhdl")[0].children;
+buttons= Array.from(buttons);
+let startbutt = document.getElementById('start');
+let endbutt;
 let candles = document.getElementsByClassName("scorebox");
 let phaseStatus = document.getElementsByClassName("status");
 let currPhase = "Attack Phase";
-let messagePhase = document.querySelectorAll("h1")[2];
+let messagePhase = document.getElementById("msg");
 let choices = ['Rock', 'Paper', 'Scissors'];
 let endingWin  = ['YOU', 'HAVE', 'WON'];
 let endingLoss = ['YOU', 'HAVE', 'LOST'];
 let playerWins = 0;
 let computerWins = rounds - 1;
 
-phaseStatus[0].textContent = 'Ready your sword!';
+phaseStatus[0].textContent = 'The duel begins...';
 
 let scores = document.getElementsByClassName("counter");
 
@@ -28,6 +31,11 @@ function phase()
         messagePhase.textContent=currPhase;
     }
 }
+
+buttons.forEach((button, index)=>
+{
+    button.textContent=index
+})
 
 function computerChoice(max)
 {
@@ -55,9 +63,14 @@ function round(playerChoice, computerChoice)
 {
     if(playerChoice == 1)
     {
-        if(computerChoice == 1) return;
+        if(computerChoice == 1)
+        {
+            phaseStatus[0].textContent = 'Tie. Both fighters chose ROCK. The duel continues...';
+            return;
+        }
         else if(computerChoice == 2)
         {
+            phaseStatus[0].textContent = 'Defeat. PAPER beats ROCK. The duel continues';
             lightup(computerWins);
             computerWins--;
             scores[1].textContent=rounds-computerWins-1;
@@ -80,7 +93,11 @@ function round(playerChoice, computerChoice)
             scores[0].textContent=playerWins;
             phase();
         }
-        else if(computerChoice == 2) return;
+        else if(computerChoice == 2)
+        {
+            phaseStatus[0].textContent = 'Tie. Both fighters chose PAPER. The duel continues...';
+            return;
+        }
         else 
         {
             lightup(computerWins);
@@ -105,7 +122,11 @@ function round(playerChoice, computerChoice)
             scores[0].textContent=playerWins;
             phase();
         }
-        else return;
+        else 
+        {
+            phaseStatus[0].textContent = 'Tie. Both fighters chose SCISSORS. The duel continues...';
+            return;
+        }
     }
 }
 
