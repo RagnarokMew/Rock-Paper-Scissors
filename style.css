@@ -211,7 +211,7 @@ h3
 
 .start
 {
-    display: none;
+    display: flex;
 
     position: absolute;
     left: 0%;
@@ -247,7 +247,7 @@ h3
 
 .start button
 {
-    width: 200px;
+    width: 210px;
     height: 100px;
     background-color: rgb(63, 61, 61);
     border-color: white;
