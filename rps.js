@@ -2,133 +2,69 @@ const WIN = true;
 const LOST = false;
 const DRAW = null;
 
-let rounds;
-if(!rounds)rounds=5;
-let buttons = document.getElementsByClassName("btnhdl")[0].children;
-buttons= Array.from(buttons);
-let startbutt = document.getElementById('start');
-let endbutt;
-let candles = document.getElementsByClassName("scorebox");
-let phaseStatus = document.getElementsByClassName("status");
-let currPhase = "Attack Phase";
-let messagePhase = document.getElementById("msg");
-let choices = ['Rock', 'Paper', 'Scissors'];
-let endingWin  = ['YOU', 'HAVE', 'WON'];
-let endingLoss = ['YOU', 'HAVE', 'LOST'];
+const choices = ['Rock', 'Paper', 'Scissors'];
+const endingWin  = ['YOU', 'HAVE', 'WON'];
+const endingLoss = ['YOU', 'HAVE', 'LOST'];
+
+let rounds = 5;
 let playerWins = 0;
 let computerWins = rounds - 1;
 
-phaseStatus[0].textContent = 'The duel begins...';
+let candles = document.getElementsByClassName("scorebox");
+candles = Array.from(candles);
+
+let phaseStatus = document.getElementsByClassName("status")[0];
+let currPhase = "Attack Phase";
+let messagePhase = document.getElementById("msg");
 
 let scores = document.getElementsByClassName("counter");
 
-function phase()
-{
-    if(computerChoice(2)== true)
-    {
-        if(currPhase == "Attack Phase")currPhase="Defence Phase";
-        else currPhase="Attack Phase";
-        messagePhase.textContent=currPhase;
-    }
-}
+let buttons = document.getElementsByClassName("btnhdl")[0].children;
+buttons= Array.from(buttons);
+let startbtn = document.getElementById("start");
+let menubtn1 = document.getElementById("mainmenu1");
+let menubtn2 = document.getElementById("mainmenu2");
+let startbtn1 = document.getElementById("reset1");
+let startbtn2 = document.getElementById("reset2");
 
-buttons.forEach((button, index)=>
-{
-    button.textContent=index
-})
+let startScreen = document.getElementsByClassName("start")[2];
+let defeatScreen = document.getElementsByClassName("start")[0];
+let winScreen = document.getElementsByClassName("start")[1];
 
-function computerChoice(max)
-{
-    return Math.floor(Math.random()*max);
-}
+defeatScreen.style.display = "none";
+winScreen.style.display = "none";
 
-function lightup(candle)
+startbtn.addEventListener('click', ()=>
 {
-    const fire = document.createElement('img');
-    fire.src='Images/Candle-top.png';
-    fire.className = "fade-in";
-    candles[candle].appendChild(fire);
-}
+    reset();
+    startScreen.style.display = "none";
+});
 
-function lock(ending)
+startbtn1.addEventListener('click', ()=>
 {
-    buttons.forEach((button,index)=>
-    {
-        button.disabled=true;
-        button.textContent=ending[index];
-    });
-}
+    reset();
+    defeatScreen.style.display = "none";
+});
 
-function round(playerChoice, computerChoice)
+startbtn2.addEventListener('click', ()=>
 {
-    if(playerChoice == 1)
-    {
-        if(computerChoice == 1)
-        {
-            phaseStatus[0].textContent = 'Tie. Both fighters chose ROCK. The duel continues...';
-            return;
-        }
-        else if(computerChoice == 2)
-        {
-            phaseStatus[0].textContent = 'Defeat. PAPER beats ROCK. The duel continues';
-            lightup(computerWins);
-            computerWins--;
-            scores[1].textContent=rounds-computerWins-1;
-            phase();
-        } 
-        else 
-        {
-            lightup(playerWins);
-            playerWins++;
-            scores[0].textContent=playerWins;
-            phase();
-        }
-    }
-    else if(playerChoice == 2)
-    {
-        if(computerChoice == 1) 
-        {
-            lightup(playerWins);
-            playerWins++;
-            scores[0].textContent=playerWins;
-            phase();
-        }
-        else if(computerChoice == 2)
-        {
-            phaseStatus[0].textContent = 'Tie. Both fighters chose PAPER. The duel continues...';
-            return;
-        }
-        else 
-        {
-            lightup(computerWins);
-            computerWins--;
-            scores[1].textContent=rounds-computerWins-1;
-            phase();
-        }
-    }
-    else
-    {
-        if(computerChoice == 1)
-        {
-            lightup(computerWins);
-            computerWins--;
-            scores[1].textContent=rounds-computerWins-1;
-            phase();
-        }
-        else if(computerChoice == 2)
-        {
-            lightup(playerWins);
-            playerWins++;
-            scores[0].textContent=playerWins;
-            phase();
-        }
-        else 
-        {
-            phaseStatus[0].textContent = 'Tie. Both fighters chose SCISSORS. The duel continues...';
-            return;
-        }
-    }
-}
+    reset();
+    winScreen.style.display = "none";
+});
+
+menubtn1.addEventListener('click', ()=>
+{
+    startScreen.style.display = "flex";
+    defeatScreen.style.display = "none";
+});
+
+menubtn2.addEventListener('click', ()=>
+{
+    startScreen.style.display = "flex";
+    winScreen.style.display = "none";
+});
+
+
 
 buttons[0].addEventListener('click',()=>
 {
@@ -168,3 +104,147 @@ buttons[2].addEventListener('click',()=>
         lock(endingLoss);
     }
 });
+
+
+function phase()
+{
+    if(computerChoice(2)== true)
+    {
+        if(currPhase == "Attack Phase")currPhase="Defence Phase";
+        else currPhase="Attack Phase";
+        messagePhase.textContent=currPhase;
+    }
+}
+
+function lock(ending)
+{
+    buttons.forEach((button,index)=>
+    {
+        button.disabled=true;
+        button.textContent=ending[index];
+    });
+
+    if(ending[2]=="WON")
+    {
+        winScreen.style.display = "flex";
+    }
+    else defeatScreen.style.display = "flex";
+}
+
+function computerChoice(max)
+{
+    return Math.floor(Math.random()*max);
+}
+
+function lightUp(candle)
+{
+    const fire = document.createElement('img');
+    fire.src='Images/Candle-top.png';
+    fire.className = "fade-in";
+    candles[candle].appendChild(fire);
+}
+
+function lightDown()
+{
+    candles.forEach((candle, index)=>
+    {
+        if(candle.children[1])candle.removeChild(candle.lastChild);
+        //candle.removeChild(candle.lastChild);
+    });
+
+    phaseStatus.textContent ="";
+}
+
+function round(playerChoice, computerChoice)
+{
+    if(playerChoice == 1)
+    {
+        if(computerChoice == 1)
+        {
+            phaseStatus.textContent = 'Tie. Both fighters chose ROCK. The duel continues...';
+            return;
+        }
+        else if(computerChoice == 2)
+        {
+            phaseStatus.textContent = 'Defeat. PAPER beats ROCK.';
+            lightUp(computerWins);
+            computerWins--;
+            scores[1].textContent=rounds-computerWins-1;
+            phase();
+        } 
+        else 
+        {
+            phaseStatus.textContent = 'Win. ROCK beats SCISSORS.';
+            lightUp(playerWins);
+            playerWins++;
+            scores[0].textContent=playerWins;
+            phase();
+        }
+    }
+    else if(playerChoice == 2)
+    {
+        if(computerChoice == 1) 
+        {
+            phaseStatus.textContent = 'Win. PAPER beats ROCK.';
+            lightUp(playerWins);
+            playerWins++;
+            scores[0].textContent=playerWins;
+            phase();
+        }
+        else if(computerChoice == 2)
+        {
+            phaseStatus.textContent = 'Tie. Both fighters chose PAPER. The duel continues...';
+            return;
+        }
+        else 
+        {
+            phaseStatus.textContent = 'Defeat. SCISSORS beats PAPER.';
+            lightUp(computerWins);
+            computerWins--;
+            scores[1].textContent=rounds-computerWins-1;
+            phase();
+        }
+    }
+    else
+    {
+        if(computerChoice == 1)
+        {
+            phaseStatus.textContent = 'Defeat. ROCK beats SCISSORS.';
+            lightUp(computerWins);
+            computerWins--;
+            scores[1].textContent=rounds-computerWins-1;
+            phase();
+        }
+        else if(computerChoice == 2)
+        {
+            phaseStatus.textContent = 'Win. SCISSORS beats PAPER.'
+            lightUp(playerWins);
+            playerWins++;
+            scores[0].textContent=playerWins;
+            phase();
+        }
+        else 
+        {
+            phaseStatus.textContent = 'Tie. Both fighters chose SCISSORS. The duel continues...';
+            return;
+        }
+    }
+}
+
+function reset()
+{
+    rounds = 5;
+    playerWins = 0;
+    computerWins = rounds -1;
+
+    scores[0].textContent=0;
+    scores[1].textContent=0;
+
+    buttons.forEach((button,index)=>
+    {
+        button.disabled=false;
+        button.textContent=choices[index];
+    });
+
+    lightDown();
+}
