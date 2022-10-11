@@ -203,6 +203,11 @@ h3
     animation: fade-in 0.5s 1;
 }
 
+.fin
+{
+    
+}
+
 @keyframes fade-in
 {
     0% {opacity: 0%;}

@@ -61,6 +61,7 @@ menubtn1.addEventListener('click', ()=>
 menubtn2.addEventListener('click', ()=>
 {
     startScreen.style.display = "flex";
+    animate(startScreen);
     winScreen.style.display = "none";
 });
 
@@ -105,6 +106,30 @@ buttons[2].addEventListener('click',()=>
     }
 });
 
+function animate(parent)
+{
+    let elements = parent.querySelector(".cwrap");
+    let element = elements.querySelectorAll(".fin");
+
+    element = Array.from(element);
+    element.forEach((child, index)=>
+    {
+        console.log(child);
+        fade_in(child, index);
+    });
+
+}
+
+function fade_in(target, index, opacity=0)
+{
+    if(opacity<1)
+    {
+        console.log("A");
+        opacity+=0.01;
+        target.style.opacity=opacity;
+        setTimeout(function(){fade_in(target, index ,opacity)},10*(index*2));
+    }
+}
 
 function phase()
 {
