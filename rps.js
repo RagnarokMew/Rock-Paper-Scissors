@@ -174,7 +174,6 @@ function lightDown()
     candles.forEach((candle, index)=>
     {
         if(candle.children[1])candle.removeChild(candle.lastChild);
-        //candle.removeChild(candle.lastChild);
     });
 
     phaseStatus.textContent ="";
