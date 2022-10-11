@@ -34,6 +34,8 @@ let winScreen = document.getElementsByClassName("start")[1];
 defeatScreen.style.display = "none";
 winScreen.style.display = "none";
 
+animate(startScreen);
+
 startbtn.addEventListener('click', ()=>
 {
     reset();
@@ -55,6 +57,7 @@ startbtn2.addEventListener('click', ()=>
 menubtn1.addEventListener('click', ()=>
 {
     startScreen.style.display = "flex";
+    animate(startScreen);
     defeatScreen.style.display = "none";
 });
 
@@ -152,8 +155,13 @@ function lock(ending)
     if(ending[2]=="WON")
     {
         winScreen.style.display = "flex";
+        animate(winScreen);
     }
-    else defeatScreen.style.display = "flex";
+    else 
+    {
+        defeatScreen.style.display = "flex";
+        animate(defeatScreen);
+    }
 }
 
 function computerChoice(max)
