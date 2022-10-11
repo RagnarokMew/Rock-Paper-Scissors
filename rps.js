@@ -2,9 +2,15 @@ const WIN = true;
 const LOST = false;
 const DRAW = null;
 
+const names = ["Sir Knightsalot","Knight-chan","Hotspur","The Blademaster","The Berserk", "The Crafty", "El Cid", "The Lionhearted", "The Black Prince", "The Eagle of Brittany"];
+const nNames=10;
+
 const choices = ['Rock', 'Paper', 'Scissors'];
 const endingWin  = ['YOU', 'HAVE', 'WON'];
 const endingLoss = ['YOU', 'HAVE', 'LOST'];
+
+let playerName = document.getElementsByClassName("name")[0];
+let computerName = document.getElementsByClassName("name")[1];
 
 let rounds = 5;
 let playerWins = 0;
@@ -38,18 +44,21 @@ animate(startScreen);
 
 startbtn.addEventListener('click', ()=>
 {
+    computerName.textContent = names[computerChoice(9)%nNames];
     reset();
     startScreen.style.display = "none";
 });
 
 startbtn1.addEventListener('click', ()=>
 {
+    computerName.textContent = names[computerChoice(9)%nNames];
     reset();
     defeatScreen.style.display = "none";
 });
 
 startbtn2.addEventListener('click', ()=>
 {
+    computerName.textContent = names[computerChoice(9)%nNames];
     reset();
     winScreen.style.display = "none";
 });
